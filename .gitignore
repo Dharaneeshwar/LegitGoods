@@ -1,0 +1,4 @@
+node_modules
+package-lock.json
+static/custom.scss 
+static/bootstrap_cus.css.map 
