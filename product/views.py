@@ -53,5 +53,4 @@ def editproduct(request,id):
 def productPage(request,slim):
     product_id = slim.split('-')[0]
     product = Product.objects.get(id = product_id)
-    product = serializers.serialize('json',product)
-    return render(request,'product/productPage.html',{"product":product})     
+    return render(request,'product/productPage.html',{"product":product,'isadded':False})     
