@@ -31,8 +31,8 @@ def addProduct(request):
 def myproducts(request):
     return render(request,'product/myProducts.html')
 
-def editproduct(request,id):
-    product = Product.objects.get(id = id)
+def editproduct(request,uid):
+    product = Product.objects.get(id = uid)
     if request.method == "POST":
         form = ProductForm(request.POST, request.FILES,instance = product)
         if form.is_valid():
@@ -53,4 +53,4 @@ def editproduct(request,id):
 def productPage(request,slim):
     product_id = slim.split('-')[0]
     product = Product.objects.get(id = product_id)
-    return render(request,'product/productPage.html',{"product":product,'isadded':False})     
+    return render(request,'product/productPage.html',{"product":product,'isadded':False,'product_id':product_id})     
