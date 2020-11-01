@@ -18,7 +18,7 @@
 </head>
 
 <body class="bg-background">
-    <a href="../../myproducts/" class="btn text-light btn-primary round-btn"><i class="fas fa-long-arrow-alt-left"></i></a>
+    <a href="../../myproducts/" class="d-none d-lg-block btn text-light btn-primary round-btn"><i class="fas fa-long-arrow-alt-left"></i></a>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-danger">
         <a class="navbar-brand" href="../../../" style="font-family: 'Fredoka One', cursive;"><span class="gold">L</span>egit
             <span class="gold">G</span>oods</a>
@@ -59,7 +59,7 @@
                 <p style="font-size: 30px; font-family: 'Fredoka One', cursive;" class="ml-2 pt-2 mb-2">Edit Product
                 </p>
                 <div class="form-group">
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="./" method="POST">
                         {% csrf_token %}
                         {{ form }}
                         <input type="submit" class="btn btn-success mt-3" value="Update">
@@ -85,7 +85,7 @@
     <!-- full jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- custom js -->
-    <script src="{% static '/js/editProduct.js' %}"></script>
+    <script src="{% static '/js/profile.js' %}"></script>
 </body>
 
 </html>

@@ -8,17 +8,17 @@ var firebaseConfig = {
   messagingSenderId: "948613007995",
   appId: "1:948613007995:web:fd801774c6eff66e71f0de",
 };
-uid = "";
+var uid = "";
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged((firebaseUser) => {
   if (firebaseUser) {
     console.log("user : ", firebaseUser.uid);
-    const uid = firebaseUser.uid;
+    uid = firebaseUser.uid;
   } else {
     console.log("not logged in");
     window.location = "./accounts/login/";
-    const uid = null;
+    uid = null;
   }
 });
 
@@ -85,5 +85,7 @@ $.ajax({
   },
 });
 
-
-
+function goto() {
+  // console.log("./accounts/profile/"+uid);
+  window.location = `./accounts/profile/${uid}`;
+}
