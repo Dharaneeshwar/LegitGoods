@@ -72,3 +72,20 @@ def updateQuantity(request):
             'status':"Product is not in the cart",
         } 
     return JsonResponse({'data':data})
+
+def getCartProdcuts(request):
+    uid = request.GET['uid']
+    all_cart_products = Cart.objects.filter(userid = uid).order_by('id')   
+    print(all_cart_products)
+    products = []
+    for cart_ele in all_cart_products:
+        product = cart_ele.product
+        temp = {} 
+        temp ['id'] = product.pk
+        temp ['title'] = product.title 
+        temp ['subtitle'] = product.subtitle 
+        temp ['price'] = product.selling_price 
+        temp ['quantity'] = cart_ele.quantity
+        temp ['image'] = str(product.product_image)
+        products.append(temp)
+    return JsonResponse(products,safe = False)    

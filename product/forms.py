@@ -13,7 +13,7 @@ class ProductForm(forms.ModelForm):
             )        
     class Meta:
         model = Product
-        fields = ('title','subtitle','desc','marked_price','selling_price','product_image','product_image2','product_image3','offer_present','isActive','quantity','inStock','userid') 
+        fields = ('title','subtitle','desc','marked_price','selling_price','product_image','product_image2','product_image3','offer_present','isActive','quantity','inStock','userid','tags','category') 
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control'}),
