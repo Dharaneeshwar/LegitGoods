@@ -1,11 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Tag(models.Model):
-    tag = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.tag
 
 class Category(models.Model):
     category = models.CharField(max_length=50)
@@ -21,7 +16,6 @@ class Product(models.Model):
     num_rating = models.IntegerField(default=0)
     marked_price = models.FloatField()
     selling_price = models.FloatField()
-    tags = models.ManyToManyField(Tag , blank = True)
     product_image = models.ImageField(blank= True,upload_to='./',default = 'default.jpg')
     product_image2 = models.ImageField(blank= True, upload_to='media',default = 'default.jpg')
     product_image3 = models.ImageField(blank= True, upload_to='media',default = 'default.jpg')

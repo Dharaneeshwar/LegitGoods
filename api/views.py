@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from product.models import Product, Tag, Category 
+from product.models import Product, Category 
 from cart.models import Cart
 from django.core import serializers
 

@@ -2,7 +2,7 @@ from django import forms
 from .models import User 
 
 class UserForm(forms.ModelForm):
-    userid = forms.TextInput(widget=forms.TextInput(attrs={'class':'form-control d-none'}), label='')
+    userid = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control d-none'}), label='')
     class Meta:
         model = User
         fields = '__all__' 
