@@ -9,15 +9,16 @@ var firebaseConfig = {
   appId: "1:948613007995:web:fd801774c6eff66e71f0de",
 };
 var uid = "";
+var signinlogout = document.getElementById("signin-logout"); 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged((firebaseUser) => {
   if (firebaseUser) {
     console.log("user : ", firebaseUser.uid);
     uid = firebaseUser.uid;
+    signinlogout.innerHTML = `<button onclick="logout()" class="btn btn-warning my-2 my-sm-0">Logout</button>`;
   } else {
     console.log("not logged in");
-    window.location = "./accounts/login/";
     uid = null;
   }
 });
@@ -88,4 +89,9 @@ $.ajax({
 function goto() {
   // console.log("./accounts/profile/"+uid);
   window.location = `./accounts/profile/${uid}`;
+}
+
+function logout(){
+  firebase.auth().signOut();  
+  window.location = "./";
 }
