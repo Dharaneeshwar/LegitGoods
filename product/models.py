@@ -4,7 +4,7 @@ from django.db import models
 
 class Category(models.Model):
     category = models.CharField(max_length=50)
-
+    image = models.ImageField(blank= True,upload_to='./',default = 'default.jpg')
     def __str__(self):
         return self.category
 

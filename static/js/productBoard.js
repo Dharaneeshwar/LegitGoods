@@ -43,6 +43,22 @@ var data = {
   // csrfmiddlewaretoken: getCSRFToken(),
 }
 
+var glide = new Glide('.glide', {
+  type: 'carousel',
+  perView: 4,
+  focusAt: 'center',
+  breakpoints: {
+    800: {
+      perView: 2
+    },
+    480: {
+      perView: 1
+    }
+  }
+})
+
+glide.mount()
+
 $.ajax({
   type: "Get",
   url: window.location.origin+"/api/allproduct/",
@@ -94,4 +110,8 @@ function goto() {
 function logout(){
   firebase.auth().signOut();  
   window.location = "./";
+}
+
+function gotocategory(category) {
+  window.location = "./category/"+category+"/";
 }

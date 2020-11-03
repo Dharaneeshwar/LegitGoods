@@ -60,11 +60,19 @@ def updateQuantity(request):
     product = Product.objects.get(id = product_id)
     if Cart.objects.filter(product = product,userid = uid).exists():
         cart = Cart.objects.filter(product = product,userid = uid)[0]
-        cart.quantity = quantity
-        cart.save()
-        data = {
-            'status':"Updated",
-        }
+        if int(quantity)==0:
+            print("delete")
+            cart.delete()
+            data = {
+                'status':"Deleted",
+            }
+        else:   
+            print("not deleted")
+            cart.quantity = quantity
+            cart.save()
+            data = {
+                'status':"Updated",
+            }
         print(cart)
     else:
 
@@ -89,3 +97,10 @@ def getCartProdcuts(request):
         temp ['image'] = str(product.product_image)
         products.append(temp)
     return JsonResponse(products,safe = False)    
+
+def filterproduct(request):
+    filter_category = request.GET['type']
+    category = Category.objects.get(category = filter_category)
+    filter_prod = Product.objects.filter(isActive = True,category = category)
+    filter_prod = serializers.serialize('json',filter_prod)
+    return JsonResponse(filter_prod,safe = False)

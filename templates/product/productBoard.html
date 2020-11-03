@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../../static/css/addon.css"> -->
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '@glidejs/glide/dist/css/glide.core.min.css' %}">
+    <link rel="stylesheet" href="{% static '@glidejs/glide/dist/css/glide.theme.min.css' %}">
     <title>Legit Goods</title>
 </head>
 
@@ -93,7 +95,29 @@
                 </div>
             </div>
         </div>
-        <p class="mt-5" style="font-family: 'Fredoka One', cursive; font-size: 25px;">All Products</p>
+        <p class="mt-3" style="font-family: 'Fredoka One', cursive; font-size: 25px;">All Categories</p>
+
+        <div class="glide mt-4 ">
+            <div class="glide__arrows mb-3" data-glide-el="controls">
+                <a class="p-2 text-primary" data-glide-dir="<" style="font-size: 25px;"><i class="fas fa-arrow-left"></i></a>
+                <a class="p-2 text-primary" data-glide-dir=">" style="font-size: 25px;"><i class="fas fa-arrow-right"></i></a>
+              </div>
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                {% for category in categories %}
+                <li class="glide__slide m-1 p-3" style="width: 12rem;" onclick="gotocategory('{{category.category}}')">
+                    <div class="card p-3">
+                        <img src="/media/{{category.image}}" class="card-img-top" alt="" width="width: 12rem;">
+                        <div class="card-body text-center">
+                          <h5 class="card-title">{{category.category}}</h5>
+                        </div>
+                      </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div> 
+          </div>
+        <p class="mt-3" style="font-family: 'Fredoka One', cursive; font-size: 25px;">All Products</p>
         <div id="product_show" class="container mt-3 d-flex flex-wrap justify-content-around mb-5">
          
         </div>
@@ -126,7 +150,9 @@
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- small script for dropdown -->
-    <script src="../../static/js/productBoard.js"></script>
+    <!-- glider -->
+    <script src="{% static '@glidejs/glide/dist/glide.min.js' %}"></script>
+    <script src="{% static 'js/productBoard.js' %}"></script>
 
 </body>
 

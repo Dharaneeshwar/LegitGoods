@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "bootstrap": "^4.5.3",
     "sass": "^1.27.0"
   }

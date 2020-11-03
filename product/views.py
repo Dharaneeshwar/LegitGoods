@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from .models import Product 
+from .models import Product, Category
 from .forms import ProductForm
 from django.core import serializers
 
 # Create your views here.
 
 def productshow(request):
-    return render(request,'product/productBoard.html')
+    categories = Category.objects.all()
+    return render(request,'product/productBoard.html',{'categories':categories})
 
 def addProduct(request):
     if request.method == "POST":
@@ -54,3 +55,9 @@ def productPage(request,slim):
     product_id = slim.split('-')[0]
     product = Product.objects.get(id = product_id)
     return render(request,'product/productPage.html',{"product":product,'isadded':False,'product_id':product_id})     
+
+def categoryprod(request,categoryprod):
+    return render(request,'product/filterProducts.html',{'filter':categoryprod,'extendfold':'../','title':'Category : '+categoryprod})       
+
+def allcategory(request):
+    return redirect(productshow)   

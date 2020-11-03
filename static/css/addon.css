@@ -65,10 +65,12 @@
     padding-bottom: 20px;
 }
 
+.round {
+  border-radius: 50%;
+}
 .round-btn {
   border-radius: 50%;
   font-size: 20px;
-  position: absolute;
   margin-top: 90px;
   margin-left: 30px;
   transition: 0.5s;

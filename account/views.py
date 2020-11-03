@@ -24,3 +24,5 @@ def profile(request,uid):
             form = UserForm()     
     print("no")
     return render(request,'accounts/profile.html',{'form':form.as_p()})    
+
+ 

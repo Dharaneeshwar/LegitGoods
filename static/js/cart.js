@@ -11,6 +11,7 @@ var firebaseConfig = {
   appId: "1:948613007995:web:fd801774c6eff66e71f0de",
 };
 var uid = "";
+total = 0.0;
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged((firebaseUser) => {
@@ -25,10 +26,10 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
       },
       url: window.location.origin + "/api/getCartProdcuts/",
       success: function (value) {
+        cartItems = document.getElementById("cartItems");
         cartItems.innerHTML = "";
         for (ele of value){
-            console.log(ele);
-            cartItems = document.getElementById("cartItems");
+            // console.log(ele);
             cartItems.innerHTML += `<div class="row mt-5 justify-content-between border-bottom py-3">
             <div class="col-3">
                 <img src="../../static/media/${ele.image}" alt="" height="200px">
@@ -63,9 +64,13 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
             </div>
         </div>`;
         document.getElementById('quantity-'+ele.id).value = ele.quantity;
-        console.log(ele.title,'quantity-'+ele.id,ele.quantity);
+        console.log('quan',ele.quantity);
+        console.log(ele.title,'quantity-'+ele.id,ele.quantity,document.getElementById('quantity-'+ele.id).value);
+        total += ele.quantity*ele.price;
         // BUG last ele only sets quantity
         }
+        console.log('after loop : quantity-5 - ',document.getElementById('quantity-5').value);
+        document.getElementById('subtotal').innerText = " ₹"+total;
       },
     });
   } else {
@@ -81,7 +86,7 @@ function quantitychange(id,price){
       product_id:id,
       uid:uid 
     }
-    document.getElementById('price-'+id).innerHTML = data.quantity*price
+    document.getElementById('price-'+id).innerHTML = '₹'+data.quantity*price
     $.ajax({
       type: "GET",
       data: data,
@@ -95,3 +100,4 @@ function quantitychange(id,price){
 function openprod() {
     
 }  
+
