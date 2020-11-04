@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from product.models import Product, Category 
 from cart.models import Cart
 from django.core import serializers
@@ -104,3 +104,11 @@ def filterproduct(request):
     filter_prod = Product.objects.filter(isActive = True,category = category)
     filter_prod = serializers.serialize('json',filter_prod)
     return JsonResponse(filter_prod,safe = False)
+
+def getPaymentTemplate(request):
+    if request.method == 'POST':
+        uid = request.POST['uid']
+        print('uid : ',uid)
+        return render(request,'cart/payment.html')
+    else:
+        return JsonResponse({"status":"Get Not supported"})   

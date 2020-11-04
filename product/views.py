@@ -54,7 +54,29 @@ def editproduct(request,uid):
 def productPage(request,slim):
     product_id = slim.split('-')[0]
     product = Product.objects.get(id = product_id)
-    return render(request,'product/productPage.html',{"product":product,'isadded':False,'product_id':product_id})     
+    images = [] 
+    temp = {}
+    temp['id'] = 0
+    temp['image'] = str(product.product_image)
+    temp['active'] = 'class="active"'
+    temp['active_status'] = 'active'
+    images.append(temp)
+    if product.product_image2 != 'default.jpg':
+        temp = {}
+        temp['id'] = 1
+        temp['image'] = str(product.product_image2)
+        temp['active'] = ''
+        temp['active_status'] = ''
+        images.append(temp)
+    if product.product_image3 != 'default.jpg':
+        temp = {}
+        temp['id'] = 2
+        temp['image'] = str(product.product_image3)
+        temp['active_status'] = ''
+        temp['active'] = ''
+        images.append(temp) 
+    print(images)         
+    return render(request,'product/productPage.html',{"product":product,'isadded':False,'product_id':product_id,'images':images})     
 
 def categoryprod(request,categoryprod):
     return render(request,'product/filterProducts.html',{'filter':categoryprod,'extendfold':'../','title':'Category : '+categoryprod})       
