@@ -16,13 +16,14 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
   if (firebaseUser) {
     console.log("user : ", firebaseUser.uid);
     uid = firebaseUser.uid;
+    document.getElementById('userid').value = uid;  
     $.ajax({
       type: "POST",
       data: {
         uid: uid,
         csrfmiddlewaretoken: getCSRFToken(),
       },
-      url: window.location.origin + "/api/getPaymentTemplate/",
+      url: window.location.origin + "/cart/getPaymentTemplate/",
       success: function (value) {
         document.getElementById("body").innerHTML = value;
       },
@@ -49,3 +50,4 @@ function getCSRFToken() {
     }
     return cookieValue;
   }
+

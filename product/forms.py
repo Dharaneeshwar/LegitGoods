@@ -9,10 +9,12 @@ class ProductForm(forms.ModelForm):
             )        
     class Meta:
         model = Product
-        fields = ('title','subtitle','desc','marked_price','selling_price','product_image','product_image2','product_image3','offer_present','isActive','quantity','inStock','userid','category') 
+        fields = ('title','subtitle','desc','marked_price','selling_price','product_image','product_image2','product_image3','offer_present','isActive','quantity','inStock','userid','category','india_delivery','global_delivery') 
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control'}),
             'subtitle': forms.TextInput(attrs={'class':'form-control'}),
             'desc': forms.Textarea(attrs={'class':'form-control','style':'height:200px','overflow':'auto'}),
+            'india_delivery': forms.TextInput(attrs={'class':'form-control'}),
+            'global_delivery': forms.TextInput(attrs={'class':'form-control'}),
         }

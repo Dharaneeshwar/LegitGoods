@@ -61,14 +61,14 @@ def productPage(request,slim):
     temp['active'] = 'class="active"'
     temp['active_status'] = 'active'
     images.append(temp)
-    if product.product_image2 != 'default.jpg':
+    if product.product_image2 not in ['default.jpg','']:
         temp = {}
         temp['id'] = 1
         temp['image'] = str(product.product_image2)
         temp['active'] = ''
         temp['active_status'] = ''
         images.append(temp)
-    if product.product_image3 != 'default.jpg':
+    if product.product_image3 not in ['default.jpg','']:
         temp = {}
         temp['id'] = 2
         temp['image'] = str(product.product_image3)

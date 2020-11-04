@@ -9,5 +9,4 @@ urlpatterns=[
     path('updateQuantity/',views.updateQuantity,name = "updateQuantity"),
     path('getCartProdcuts/',views.getCartProdcuts,name = "getCartProdcuts"),
     path('filterproduct/',views.filterproduct,name = "filterproduct"),
-    path('getPaymentTemplate/',views.getPaymentTemplate,name = "getPaymentTemplate"),
 ]

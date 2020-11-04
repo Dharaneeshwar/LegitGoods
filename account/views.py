@@ -8,7 +8,11 @@ def login(request):
 
 def profile(request,uid):
     if request.method == "POST":
-        form = UserForm(request.POST)
+        if User.objects.filter(userid = uid).exists():
+            inst = User.objects.get(userid = uid)
+            form = UserForm(request.POST, instance = inst)
+        else:
+            form = UserForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
             form.save()

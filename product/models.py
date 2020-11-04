@@ -26,6 +26,8 @@ class Product(models.Model):
     isActive = models.BooleanField(default = True)
     quantity = models.IntegerField(default=1)
     inStock = models.BooleanField(default = True)
+    india_delivery = models.IntegerField(default = 100)
+    global_delivery = models.IntegerField(default = 1000)
 
     def __str__(self):
         return self.title
