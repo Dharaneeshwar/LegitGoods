@@ -105,25 +105,8 @@ def filterproduct(request):
     filter_prod = serializers.serialize('json',filter_prod)
     return JsonResponse(filter_prod,safe = False)
 
-# def getPaymentTemplate(request):
-#     if request.method == 'POST':
-#         uid = request.POST['uid']
-#         print('uid : ',uid)
-#         total = 0
-#         all_cart_products = Cart.objects.filter(userid = uid).order_by('id')   
-#         print(all_cart_products)
-#         products = []
-#         for cart_ele in all_cart_products:
-#             product = cart_ele.product
-#             temp = {} 
-#             temp ['id'] = product.pk
-#             temp ['title'] = product.title 
-#             temp ['price'] = "₹"+str(int(product.selling_price)) 
-#             temp ['quantity'] = cart_ele.quantity
-#             temp ['amount'] = "₹"+str(int(cart_ele.quantity * product.selling_price))
-#             products.append(temp)
-#             total += int(temp['amount'][1:])
-#         print(products)    
-#         return render(request,'cart/payment.html',{'products':products,'total':total})
-#     else:
-#         return JsonResponse({"status":"Get Not supported"})   
+def clearCart(request):
+    uid = request.GET['uid']
+    all_cart_products = Cart.objects.filter(userid = uid).order_by('id')
+    all_cart_products.delete()
+    return JsonResponse({'message':'Cart Cleared!'})    

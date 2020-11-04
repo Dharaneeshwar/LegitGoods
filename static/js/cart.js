@@ -28,6 +28,14 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
       success: function (value) {
         cartItems = document.getElementById("cartItems");
         cartItems.innerHTML = "";
+        if (value.length==0){
+          document.getElementById('subtotal_div').innerHTML = `
+          <i class="fas fa-shopping-cart d-flex  justify-content-center text-dark mt-5 pt-4" style="font-size:70px;"></i>
+          <h5 class='mt-5 text-center'>There are no items in the cart.</h5>`;
+        }
+        else{
+          console.log(value.length);
+        }
         for (ele of value){
             // console.log(ele);
             cartItems.innerHTML += `<div class="row mt-5 justify-content-between border-bottom py-3">
@@ -69,7 +77,7 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
         total += ele.quantity*ele.price;
         // BUG last ele only sets quantity
         }
-        console.log('after loop : quantity-5 - ',document.getElementById('quantity-5').value);
+        // console.log('after loop : quantity-5 - ',document.getElementById('quantity-5').value);
         document.getElementById('subtotal').innerText = " ₹"+total;
       },
     });
