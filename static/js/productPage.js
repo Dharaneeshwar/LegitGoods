@@ -10,12 +10,14 @@ var firebaseConfig = {
   messagingSenderId: "948613007995",
   appId: "1:948613007995:web:fd801774c6eff66e71f0de",
 };
+var signinlogout = document.getElementById("signin-logout"); 
 var uid = "";
 max_number = 10;
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged((firebaseUser) => {
   if (firebaseUser) {
+    signinlogout.innerHTML = `<button onclick="logout()" class="btn btn-warning my-2 my-sm-0">Logout</button>`;
     console.log("user : ", firebaseUser.uid);
     uid = firebaseUser.uid;
     $.ajax({
@@ -76,7 +78,9 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
     });
   } else {
     console.log("not logged in");
-    window.location = "../../accounts/login/";
+      cart_area.innerHTML = "";
+      cart_area.innerHTML = `
+      <h4 class="text-muted mb-4"><a href="../../accounts/login/">Sign in</a> to add to cart.</h4>`
     uid = null;
   }
 });
@@ -191,4 +195,9 @@ function generateOptions() {
   }
   console.log("options",options);
   return options;
+}
+
+function logout(){
+  firebase.auth().signOut();  
+  window.location = "./";
 }

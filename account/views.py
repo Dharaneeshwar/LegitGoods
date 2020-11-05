@@ -29,4 +29,5 @@ def profile(request,uid):
     print("no")
     return render(request,'accounts/profile.html',{'form':form.as_p()})    
 
- 
+def notification(request):
+    return render(request,'accounts/profile.html')

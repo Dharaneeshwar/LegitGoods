@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from product.models import Product, Category 
 from cart.models import Cart
+from account.models import PurchaseInfo, User
 from django.core import serializers
 
 def allProducts(request):
@@ -107,6 +108,11 @@ def filterproduct(request):
 
 def clearCart(request):
     uid = request.GET['uid']
+    user_purchased = User.objects.get(userid = uid)
     all_cart_products = Cart.objects.filter(userid = uid).order_by('id')
+    for cart in all_cart_products:
+        product = cart.product
+        purchase = PurchaseInfo(product = product,seller = product.userid,notification = "New Purchase!",quantity = cart.quantity,amount = product.selling_price*cart.quantity,deliver_to = user_purchased)
+        purchase.save()
     all_cart_products.delete()
     return JsonResponse({'message':'Cart Cleared!'})    

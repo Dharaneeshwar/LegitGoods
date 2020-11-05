@@ -31,3 +31,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+class Review(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    userid = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    desc = models.TextField(max_length=100)
+    stars = models.IntegerField(default = 4)
+    def __str__(self):
+        return self.title        

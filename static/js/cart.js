@@ -12,10 +12,13 @@ var firebaseConfig = {
 };
 var uid = "";
 total = 0.0;
+var signinlogout = document.getElementById("signin-logout"); 
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged((firebaseUser) => {
   if (firebaseUser) {
+    signinlogout.innerHTML = `<button onclick="logout()" class="btn btn-warning my-2 my-sm-0">Logout</button>`;
     console.log("user : ", firebaseUser.uid);
     uid = firebaseUser.uid;
     $.ajax({
@@ -109,3 +112,6 @@ function openprod() {
     
 }  
 
+function gotoprofile(){
+  window.location = "../accounts/profile/"+uid;
+}

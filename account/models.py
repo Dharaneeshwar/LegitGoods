@@ -1,5 +1,5 @@
 from django.db import models
-
+from product.models import Product
 # Create your models here.
 
 class User(models.Model):
@@ -17,3 +17,19 @@ class User(models.Model):
 
     class Meta:
         unique_together = [['userid']]
+
+
+class PurchaseInfo(models.Model):
+    seller = models.CharField(max_length=50)
+    notification = models.CharField(max_length=120)
+    time_created = models.TimeField(auto_now=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    amount = models.IntegerField()
+    deliver_to = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.notification+str(self.quantity)
+
+
+        
