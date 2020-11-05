@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from .models import Product, Category
+from account.models import PurchaseInfo
 from .forms import ProductForm
 from django.core import serializers
 
@@ -83,3 +84,6 @@ def categoryprod(request,categoryprod):
 
 def allcategory(request):
     return redirect(productshow)   
+
+def productsToDeliver(request):
+    return render(request,'product/productsToDeliver.html')

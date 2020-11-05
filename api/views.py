@@ -116,3 +116,25 @@ def clearCart(request):
         purchase.save()
     all_cart_products.delete()
     return JsonResponse({'message':'Cart Cleared!'})    
+
+def productsToDeliver(request):
+    uid = request.GET['uid']
+    all_prod_purchased = PurchaseInfo.objects.filter(seller = uid)
+    products = []
+    for prod in all_prod_purchased:
+        prod_info = {} 
+        prod_info['notification'] = prod.notification
+        prod_info['time'] = prod.time_created
+        product_obj = prod.product
+        prod_info['prod_title'] = product_obj.title 
+        prod_info['quantity'] = prod.quantity 
+        prod_info['amount'] = prod.amount 
+        user = prod.deliver_to 
+        prod_info['user_name'] = user.name 
+        prod_info['user_email'] = user.email 
+        prod_info['user_address'] = user.address
+        prod_info['user_country'] = user.country
+        prod_info['user_state'] = user.state
+        prod_info['user_pin'] = user.pincode
+        products.append(prod_info)        
+    return JsonResponse(products,safe = False)

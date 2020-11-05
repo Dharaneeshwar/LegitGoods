@@ -10,4 +10,5 @@ urlpatterns=[
     path('getCartProdcuts/',views.getCartProdcuts,name = "getCartProdcuts"),
     path('filterproduct/',views.filterproduct,name = "filterproduct"),
     path('clearCart/',views.clearCart,name = "clearCart"),
+    path('productsToDeliver/',views.productsToDeliver,name = "productsToDeliver"),
 ]
