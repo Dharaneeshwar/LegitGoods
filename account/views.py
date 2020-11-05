@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import User
+from django.http import JsonResponse
 from .forms import UserForm
 # Create your views here.
 
@@ -31,3 +32,8 @@ def profile(request,uid):
 
 def notification(request):
     return render(request,'accounts/profile.html')
+
+def payout(request):
+    return render(request,'accounts/payout.html')    
+
+

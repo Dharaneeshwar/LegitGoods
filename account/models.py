@@ -11,7 +11,8 @@ class User(models.Model):
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     pincode = models.IntegerField()
-
+    payout = models.IntegerField(default = 0)
+    
     def __str__(self):
         return self.name
 
@@ -30,6 +31,13 @@ class PurchaseInfo(models.Model):
 
     def __str__(self):
         return self.notification+str(self.quantity)
+
+class RequestPayout(models.Model):
+    userid = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return str(self.amount)
 
 
         

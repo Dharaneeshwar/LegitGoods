@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from product.models import Product, Category 
 from cart.models import Cart
-from account.models import PurchaseInfo, User
+from account.models import PurchaseInfo, User, RequestPayout
 from django.core import serializers
 import os
 from .twilio import account_sid,auth_token
@@ -124,6 +124,8 @@ def clearCart(request):
         # print(f"Congratulations! Your product '{product.title}' sold on LegitGoods! Check it out on the Website.")
         purchase = PurchaseInfo(product = product,seller = product.userid,notification = f"{product.title} Purchased!",quantity = cart.quantity,amount = product.selling_price*cart.quantity,deliver_to = user_purchased)
         purchase.save()
+        seller.payout = seller.payout + product.selling_price*cart.quantity
+        seller.save()
     all_cart_products.delete()
     return JsonResponse({'message':'Cart Cleared!'})    
 
@@ -148,3 +150,18 @@ def productsToDeliver(request):
         prod_info['user_pin'] = user.pincode
         products.append(prod_info)        
     return JsonResponse(products,safe = False)
+
+def getPayoutAmount(request):
+    uid = request.GET['uid']
+    user = User.objects.get(userid = uid)  
+    return JsonResponse({'amount':user.payout})
+
+def requestpayout(request):
+    uid = request.GET['uid']
+    amount = request.GET['amount']
+    user = User.objects.get(userid = uid)
+    payout = RequestPayout(userid = user,amount = amount)
+    payout.save()
+    user.payout = user.payout - int(amount)
+    user.save()  
+    return JsonResponse({'messasge':f'₹{amount} is requested'})     

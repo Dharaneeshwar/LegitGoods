@@ -6,6 +6,7 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = '__all__' 
+        exclude = ['payout']
         widgets = {
             'phone_number': forms.NumberInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
