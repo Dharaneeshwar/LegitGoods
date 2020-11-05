@@ -4,6 +4,11 @@ from product.models import Product, Category
 from cart.models import Cart
 from account.models import PurchaseInfo, User
 from django.core import serializers
+import os
+from .twilio import account_sid,auth_token
+from twilio.rest import Client
+
+client = Client(account_sid, auth_token)
 
 def allProducts(request):
     all_prod = Product.objects.filter(isActive = True)
@@ -112,7 +117,12 @@ def clearCart(request):
     all_cart_products = Cart.objects.filter(userid = uid).order_by('id')
     for cart in all_cart_products:
         product = cart.product
-        purchase = PurchaseInfo(product = product,seller = product.userid,notification = "New Purchase!",quantity = cart.quantity,amount = product.selling_price*cart.quantity,deliver_to = user_purchased)
+        seller = User.objects.get(userid = product.userid)
+        client.messages.create(from_='+19387772555',
+                       to='+91'+seller.phone_number,
+                       body=f"Congratulations! {cart.quantity} items of your product '{product.title}' sold on LegitGoods! Check it out on the Website.")
+        # print(f"Congratulations! Your product '{product.title}' sold on LegitGoods! Check it out on the Website.")
+        purchase = PurchaseInfo(product = product,seller = product.userid,notification = f"{product.title} Purchased!",quantity = cart.quantity,amount = product.selling_price*cart.quantity,deliver_to = user_purchased)
         purchase.save()
     all_cart_products.delete()
     return JsonResponse({'message':'Cart Cleared!'})    
