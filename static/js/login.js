@@ -13,6 +13,7 @@ window.onload = function () {
     firebase.initializeApp(firebaseConfig);
     render();
   };
+  
   function render() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container"

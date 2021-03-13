@@ -1,58 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="shortcut icon" href="{% static '/logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/bootstrap_cus.css' %}">
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
-<body>
-    <div>
-    <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand" href="#" style="font-family: 'Fredoka One', cursive;"><span class="gold">L</span>egit
-            <span class="gold">G</span>oods</a>
-    </nav>
-    <div class="row align-items-center" style="margin-top: 20px;">
-                <div class="col-lg-6 mx-auto" style="margin-left: 20px;">
-                    <div class="main_container">
-                        <div class="login-container d-flex align-items-center justify-content-center">
-                    <div>
-                        <div class="login-form text-center">
-                            <h1 style="margin-bottom: 20px;color:#111;font-family: 'Fredoka One', cursive;">Sign-in</h1>
-                            <div class="form-group">
-                                <input type="text" id="phno" class="form-control rounded-pill form-control-lg"
-                                    placeholder="Mobile Number">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="pin" class="form-control rounded-pill form-control-lg"
-                                    placeholder="Pin">
-                            </div>
 
-                            <div id="recaptcha-container" class="adj d-flex align-items-center " style="margin-bottom: 10px;"></div>
-                            <div class="adj d-flex align-items-center justify-content-between">
+<body style="background-color:#edebeb;">
+    <div class="col-md-8 mx-auto pt-5" style="background-color: #fff;height: 100vh;">
+        <div class="main_container">
+            <div class="d-flex align-items-center justify-content-center">
 
-                                <button id="otp" onclick="phoneAuth()"
-                                    class="btn mt-2 btn-primary btn-block  rounded-pill btn-lg">Send
-                                    OTP</button>
-                                <button id="signinbutton" onclick="codeVerify()"
-                                    class="btn mt-2 btn-primary btn-block rounded-pill btn-lg">Sign
-                                    in</button>
-                                
-                            </div>
+                <div class="">
+                    <img src="{% static '/logo.png' %}" alt="" srcset=""
+                    style="display: block; margin-left: auto; margin-right: auto; height: 8em; border-radius: 20px;">
+                    <div class="login-form" style="margin-top: 20%;">
+                        <b>
+                            <p style="font-size: x-large; margin-bottom: 20px;color:#111;">
+                                Sign-in using Phone Number
+                            </p>
+                        </b>
+                        <div class="form-group">
+                            <input type="text" id="phno" class="form-control  form-control-lg"
+                                placeholder="Mobile Number">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="pin" class="form-control form-control-lg" placeholder="Pin">
+                        </div>
+
+                        <div id="recaptcha-container" class="adj d-flex align-items-center "
+                            style="margin-bottom: 10px;"></div>
+                        <div class="adj d-flex align-items-center justify-content-between">
+
+                            <button id="otp" onclick="phoneAuth()"
+                                class="btn mt-2 mr-2 btn-primary btn-block btn-lg">Send
+                                OTP</button>
+                            <button id="signinbutton" onclick="codeVerify()"
+                                class="btn mt-2 ml-2 btn-primary btn-block btn-lg">Sign
+                                in</button>
+
                         </div>
                     </div>
                 </div>
- 
-                    </div>
-                </div>
-                </div>
+            </div>
+
+        </div>
     </div>
-    
-    </div>        
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -67,4 +69,5 @@
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
     <script src="{% static 'js/login.js' %}"></script>
 </body>
+
 </html>

@@ -25,6 +25,9 @@ var firebaseConfig = {
           console.log(value[0]);
           list = document.getElementById('list');
           list.innerHTML = "";  
+          if (value[0] == undefined){
+            list.innerHTML += '<b class="my-5 text-center">No Products Sold</b>';  
+          } else {
           for (ele of value){
             list.innerHTML += `<div class="list-group-item text-dark">
             <div class="d-flex w-100 justify-content-between">
@@ -42,6 +45,7 @@ var firebaseConfig = {
             <p class="mb-1"><b>Country: </b>${ele.user_country}</p>
         </div>`;
         }
+      }
         },
       });
     } else {

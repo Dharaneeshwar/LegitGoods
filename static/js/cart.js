@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged((firebaseUser) => {
         if (value.length==0){
           document.getElementById('subtotal_div').innerHTML = `
           <i class="fas fa-shopping-cart d-flex  justify-content-center text-dark mt-5 pt-4" style="font-size:70px;"></i>
-          <h5 class='mt-5 text-center'>There are no items in the cart.</h5>`;
+          <h5 class='mt-5 text-center' style='margin-top:200px; margin-bottom:200px;'>There are no items in the cart.</h5>`;
         }
         else{
           console.log(value.length);

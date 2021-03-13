@@ -9,10 +9,10 @@ class Category(models.Model):
         return self.category
 
 class Product(models.Model):
-    title = models.CharField(max_length=50)
-    subtitle = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
+    subtitle = models.CharField(max_length=100)
     stars = models.FloatField(default=0.0)
-    desc = models.TextField(max_length=500, blank=True)
+    desc = models.TextField(max_length=5000, blank=True)
     num_rating = models.IntegerField(default=0)
     marked_price = models.FloatField()
     selling_price = models.FloatField()

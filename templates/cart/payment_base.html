@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
+    <link rel="shortcut icon" href="{% static '/logo.png' %}" type="image/x-icon">  
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="{% static 'css/bootstrap_cus.css' %}" />
 	<link rel="stylesheet" href="{% static 'css/addon.css' %}" />
@@ -65,7 +66,7 @@
 			</div>
 			<div class="col-12 col-lg-6 pt-3">
 				<h3 class="mb-3">Enter your Payment Details: </h3>
-				<form action="/cart/charge/" method="post" id="payment-form">
+				<form class="pl-2 mb-4" action="/cart/charge/" method="post" id="payment-form">
 					{% csrf_token %}
 					<input type="text" class="d-none" name="uid" id="userid">
 					<div class="form-row">
@@ -82,27 +83,31 @@
 
 					<button class="btn btn-primary mt-4">Pay the Amount</button>
 				</form>
+				<div class="border border-4 border-danger p-3 m-3" style="border-radius: 10px;">
+					<p class="text-danger"><b>Note: </b> This is a working payment system. Yet, the payment process is under the test phase.</p>
+					<p><b>What you can do</b>, to test the working</p>
+	
+					<ul>
+						<li>Card Number: 4242 4242 4242 4242</li>
+						<li>MM/YY: Any future date</li>
+						<li>CVC: Any 3 numbers</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="container-fluid footer mt-5">
 		<div class="row justify-content-around">
-			<div class="col-12 col-sm-4 mb-5 mb-sm-1 foot-name">
+			<div class="col-12 col-md-4">
 				<h2>Legit Goods</h2>
-				<p>Built for RMK Rural Hackathon</p>
+				<p>E-commerce site for selling quality Rural Products</p>
 			</div>
-			<div class="col-12 col-sm-4 foot-name">
-				<h2>Built by</h2>
-				<p class="mt-4">
-					Dharaneeshwar P
-					<a href="https://github.com/Dharaneeshwar" target="_blank"><i class="fab fa-github ml-2"
-							style="font-size: 18px"></i></a>
-				</p>
-				<p>
-					Anandha Murthy B
-					<a href="https://github.com/anandhamurthy" target="_blank"><i class="fab fa-github ml-2"
-							style="font-size: 18px"></i></a>
-				</p>
+			<div class="col-12 col-md-4 foot-name">
+				<!-- <h2>Built by</h2>
+                <p class="mt-4">Dharaneeshwar P <a href="https://github.com/Dharaneeshwar" target="_blank"><i
+                            class="fab fa-github ml-2" style="font-size: 25px;"></i></a></p>
+                <p>Anandha Murthy B <a href="https://github.com/anandhamurthy" target="_blank"><i
+                            class="fab fa-github ml-2" style="font-size: 25px;"></i></a></p> -->
 			</div>
 		</div>
 	</div>

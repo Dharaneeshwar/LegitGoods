@@ -82,8 +82,13 @@ $.ajax({
     } else {
       var rating = `<span class="text-dark">Be the first one to Rate this product.</span>`;
     }
+      if (product.selling_price === product.marked_price){
+        marked_price = `<span class="text-muted original-price">₹${product.marked_price}</span>`; 
+      } else {
+        marked_price = '';
+      }
       product_show.innerHTML += `<a href="./product/${product_dict.pk+"-"+product.title}" class="my-2" style="text-decoration: none;">
-      <div class="card item" style="width: 18rem;">
+      <div class="card  item" style="width: 18rem;">
           <img src="./media/${product.product_image}"
               class="card-img-top p-2 pt-4" alt="...">
           <div class="card-body">
@@ -93,8 +98,7 @@ $.ajax({
               <div class="d-flex align-middle ">
                   ${rating}
               </div>
-              <p class="mt-3" style="color: black; font-weight: 500;">₹${product.selling_price} <span
-                      class="text-muted original-price">₹${product.marked_price}</span></p>
+              <p class="mt-3" style="color: black; font-weight: 500;">₹${product.selling_price} ${marked_price}</p>
           </div>
       </div>
   </a>`
