@@ -4,3 +4,4 @@ static/custom.scss
 static/bootstrap_cus.css.map 
 # cart/stripe_cred.py
 # api/twilio.py
+db.json

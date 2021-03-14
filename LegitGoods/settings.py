@@ -24,7 +24,7 @@ SECRET_KEY = 'khgrw*#efsnxb$ku(!up@=0g4q&zr8xzb35=c)iqg8u7+#0pv+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','legitgoods.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','legitgoods.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -78,16 +78,25 @@ WSGI_APPLICATION = 'LegitGoods.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Legit_goods',
+#         'USER':'postgres',
+#         "PASSWORD":'password',
+#         'HOST':'localhost'
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Legit_goods',
-        'USER':'postgres',
-        "PASSWORD":'password',
-        'HOST':'localhost'
+        'NAME': 'dec6al5qbv3fm3',
+        'USER':'efrjqftbuluffo',
+        "PASSWORD":'b9b56a4fa30861804890440700431d5701fff67fd32a2da4dae7f40e434732c2',
+        'HOST':'ec2-54-161-239-198.compute-1.amazonaws.com'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
