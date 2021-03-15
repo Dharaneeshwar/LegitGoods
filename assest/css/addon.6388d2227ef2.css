@@ -1,0 +1,94 @@
+.rating {
+  border-radius: 5px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+.dec-none {
+  text-decoration: none !important;
+}
+
+.item {
+  border: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+.item:hover {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.12);
+}
+
+.footer {
+  background-color: #071e3d;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  color: aliceblue;
+}
+
+.footer h2 {
+  /* font-family: "Fredoka One", cursive; */
+}
+
+.gold {
+  font-size: 30px;
+}
+
+.foot-name p {
+  font-size: 20px;
+}
+
+.fa-github {
+  transition: 0.3s;
+  color: aliceblue;
+}
+
+.fa-github:hover {
+  color: #ff5959;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+
+}
+
+.dropdown > .dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}
+
+.dropdown-item {
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.round {
+  border-radius: 50%;
+}
+.round-btn {
+  position: absolute;
+  border-radius: 50%;
+  font-size: 20px;
+  margin-top: 90px;
+  margin-left: 30px;
+  transition: 0.5s;
+}
+
+.round-btn:hover{
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+.s-20 {
+  color: #ff5959;
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+.rating-title {
+  font-size: 18px;
+  transform: translateY(-4px);
+}
