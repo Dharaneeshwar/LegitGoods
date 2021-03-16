@@ -1,1 +1,1 @@
-web: gunicorn LegitGoods.wsgi --log-file - 
+web: python manage.py collectstatic --no-input; gunicorn LegitGoods.wsgi --log-file - --log-level debug
